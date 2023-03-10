@@ -1,0 +1,288 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>Oracle数据库学习笔记 | ShiDI的个人博客</title><meta name="author" content="hehehe327473"><meta name="copyright" content="hehehe327473"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数据库学习用户创建DCL(Data Control Language)数据控制语言 创建用户密码create user zhangsan identified by zhangsan;  在Oracle 12c 环境下， 使用命令行或是SQL Developer 创建用户失败， 错误信息报：ORA-65096: 公用用户名或角色名无效65096. 00000 -  “invalid common">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle数据库学习笔记">
+<meta property="og:url" content="https://shidi233.github.io/ShiDI/2023/03/10/sql/index.html">
+<meta property="og:site_name" content="ShiDI的个人博客">
+<meta property="og:description" content="数据库学习用户创建DCL(Data Control Language)数据控制语言 创建用户密码create user zhangsan identified by zhangsan;  在Oracle 12c 环境下， 使用命令行或是SQL Developer 创建用户失败， 错误信息报：ORA-65096: 公用用户名或角色名无效65096. 00000 -  “invalid common">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://shidi233.github.io/ShiDI/img/av1.jpg">
+<meta property="article:published_time" content="2023-03-10T15:43:47.000Z">
+<meta property="article:modified_time" content="2023-03-10T16:06:53.314Z">
+<meta property="article:author" content="hehehe327473">
+<meta property="article:tag" content="Oracle">
+<meta property="article:tag" content="SQL">
+<meta property="article:tag" content="Qt">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://shidi233.github.io/ShiDI/img/av1.jpg"><link rel="shortcut icon" href="/ShiDI/img/favicon.png"><link rel="canonical" href="https://shidi233.github.io/ShiDI/2023/03/10/sql/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/ShiDI/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/ShiDI/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Oracle数据库学习笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-03-11 00:06:53'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/ShiDI/img/av1.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/ShiDI/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/ShiDI/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/ShiDI/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/ShiDI/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/ShiDI/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/ShiDI/bangumis/"><i class="fa-fw fas fa-video"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/ShiDI/test/"><i class="fa-fw fas fa-tags"></i><span> 实验室</span></a></div><div class="menus_item"><a class="site-page" href="/ShiDI/log/"><i class="fa-fw fas fa-link"></i><span> 日志</span></a></div><div class="menus_item"><a class="site-page" href="/ShiDI/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/ShiDI/img/head1.jpg')"><nav id="nav"><span id="blog-info"><a href="/ShiDI/" title="ShiDI的个人博客"><span class="site-name">ShiDI的个人博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/ShiDI/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/ShiDI/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/ShiDI/bangumis/"><i class="fa-fw fas fa-video"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/ShiDI/test/"><i class="fa-fw fas fa-tags"></i><span> 实验室</span></a></div><div class="menus_item"><a class="site-page" href="/ShiDI/log/"><i class="fa-fw fas fa-link"></i><span> 日志</span></a></div><div class="menus_item"><a class="site-page" href="/ShiDI/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Oracle数据库学习笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-10T15:43:47.000Z" title="发表于 2023-03-10 23:43:47">2023-03-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-03-10T16:06:53.314Z" title="更新于 2023-03-11 00:06:53">2023-03-11</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Oracle数据库学习笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="数据库学习"><a href="#数据库学习" class="headerlink" title="数据库学习"></a>数据库学习</h1><h2 id="用户创建"><a href="#用户创建" class="headerlink" title="用户创建"></a>用户创建</h2><p>DCL(Data Control Language)数据控制语言</p>
+<h3 id="创建用户密码"><a href="#创建用户密码" class="headerlink" title="创建用户密码"></a>创建用户密码</h3><pre><code>create user zhangsan identified by zhangsan;
+</code></pre>
+<p>在Oracle 12c 环境下， 使用命令行或是SQL Developer 创建用户失败， 错误信息报：<br><strong>ORA-65096: 公用用户名或角色名无效</strong><br><strong>65096. 00000 -  “invalid common user or role name”</strong><br>原因及解析：<br>Oracle 12C 提出了多租户环境（Multitenant Environment）和容器（Container）的概念, 区分了两个层级：<br>CDB ， Container Database, 数据库容器<br>PDB, Pluggable Database, 可插拔数据库</p>
+<p>在数据库中建立的用户对应以上两个层级：<br>COMMOM USERS ， 普通用户， 一般建立在CDB层， 用户名需要以 C#或C##开头；<br>LOCAL USERS , 本地用户， 仅建立在PBD层，建立的时候需要指定容器</p>
+<p>从上面的错误 “invalid common user or role name” 来看， COMMOM USERS 需要以 C#或C##开头， 所有这里的用户名不合规范。</p>
+<p>解决方法：<br>解决方法有两种：<br>如果确定需要创建在CDB容器中， 则在用户名前面加C#或C## （最好是加上C##， 部分环境加C#会不行）<br>如果想保持原用户名，可以将用户创建到PDB容器中。</p>
+<h3 id="用户赋予权限"><a href="#用户赋予权限" class="headerlink" title="用户赋予权限"></a>用户赋予权限</h3><pre><code>grant create session to zhangsan;//授予zhangsan用户创建session的权限，即登陆权限
+grant connect,resource to zhangsan；//授予zhangsan用户connect和resource权限
+grant unlimited tablespace to zhangsan;//授予zhangsan用户使用表空间的权限
+grant create table to zhangsan;//授予创建表的权限
+grant drop any table to zhangsan;//授予删除表的权限
+grant insert any table to zhangsan;//插入表的权限
+grant update any table to zhangsan;//修改表的权限
+grant create view to zhangsan ; //创建视图权限
+</code></pre>
+<p>CONNECT角色： –是授予最终用户的典型权利，最基本的<br>        ALTER SESSION –修改会话<br>        CREATE CLUSTER –建立聚簇<br>        CREATE DATABASE LINK –建立数据库链接<br>        CREATE SEQUENCE –建立序列<br>        CREATE SESSION –建立会话<br>        CREATE SYNONYM –建立同义词<br>        CREATE VIEW –建立视图<br>RESOURCE角色： –是授予开发人员的<br>        CREATE CLUSTER –建立聚簇<br>        CREATE PROCEDURE –建立过程<br>        CREATE SEQUENCE –建立序列<br>        CREATE TABLE –建表<br>        CREATE TRIGGER –建立触发器<br>        CREATE TYPE –建立类型</p>
+<p>DBA：拥有全部特权，是系统最高权限，只有DBA才可以创建数据库结构。<br>RESOURCE:拥有Resource权限的用户只可以创建实体，不可以创建数据库结构。<br>CONNECT：拥有Connect权限的用户只可以登录Oracle，不可以创建实体，不可以创建数据库结构。<br>对于普通用户：授予connect, resource权限。<br>对于DBA管理用户：授予connect，resource, dba权限。</p>
+<p>撤销权限<br>    基本语法同grant,关键字为revoke</p>
+<p>查看权限</p>
+<pre><code>select * from user_sys_privs;//查看当前用户所有权限
+select * from user_tab_privs;//查看所用用户对表的权限
+</code></pre>
+<h2 id="表操作"><a href="#表操作" class="headerlink" title="表操作"></a>表操作</h2><p>DDL(Data Definition Language)数据定义语言</p>
+<h3 id="操作库"><a href="#操作库" class="headerlink" title="操作库"></a>操作库</h3><p>– 创建库</p>
+<pre><code>create database db1;
+</code></pre>
+<p>– 创建库是否存在，不存在则创建</p>
+<pre><code>create database if not exists db1;
+</code></pre>
+<p>– 查看所有数据库</p>
+<pre><code>show databases;
+</code></pre>
+<p>– 查看某个数据库的定义信息 </p>
+<pre><code>show create database db1; 
+</code></pre>
+<p>– 修改数据库字符信息</p>
+<pre><code>alter database db1 character set utf8; 
+</code></pre>
+<p>– 删除数据库</p>
+<pre><code>drop database db1; 
+</code></pre>
+<h3 id="操作表"><a href="#操作表" class="headerlink" title="操作表"></a>操作表</h3><p>–创建表</p>
+<pre><code>create table student(
+    id int,
+    name varchar(32),
+    age int ,
+    score double(4,1),
+    birthday date,
+    insert_time timestamp
+);
+</code></pre>
+<p>– 查看表结构</p>
+<pre><code>desc 表名;
+</code></pre>
+<p>– 查看创建表的SQL语句</p>
+<pre><code>show create table 表名;
+</code></pre>
+<p>– 修改表名</p>
+<pre><code>alter table 表名 rename to 新的表名;
+</code></pre>
+<p>– 添加一列</p>
+<pre><code>alter table 表名 add 列名 数据类型;
+</code></pre>
+<p>– 删除列</p>
+<pre><code>alter table 表名 drop 列名;
+</code></pre>
+<p>– 删除表</p>
+<pre><code>drop table 表名;
+drop table  if exists 表名 ;
+</code></pre>
+<h3 id="约束条件"><a href="#约束条件" class="headerlink" title="约束条件"></a>约束条件</h3><p>添加约束<br>表格创建成功后，为了确保数据的完整性，我们还需要为表格添加一系列的约束，比如主键、唯一约束、检查约束、默认值、外键等。现在咱们就一一进行讲解。<br>主键约束：设置主键约束有两种方式，可以在创建表的同时设置主键，也可以在表格创建完成之后在单独添加。<br>在建表的同时设置主键（以Number字段举例）：</p>
+<pre><code>create table StudentInfo(
+ ID int not null identity(1,1),--编号
+ Number char(10) not null primary key,--学号 主键
+ Name varchar(20) not null,--姓名
+ Sex char(2) null,--性别
+ Age int,--年龄
+ Birthday date,--出生日期
+ Address varchar(50),--家庭住址
+ Class varchar(10)--班级
+)
+</code></pre>
+<p>表格创建之后单独添加约束：</p>
+<pre><code>alter table StudentInfo add constraint PK_StudentInfo_Number primary key (Number)
+</code></pre>
+<p>这两种方式均可。<br>如果需要添加多个列作为主键列，则可以使用以下语法：</p>
+<pre><code>alter table 表名 add constraint 约束名称 约束 （字段1，字段2，...）
+</code></pre>
+<p>例如：alter table StudentInfo add constraint PK_StudentInfo_Number primary key (ID,Number,Name)</p>
+<p>唯一约束：同主键约束一样，唯一约束也可以有两种添加方式。<br>在建表的时候设置（以ID字段示例）：</p>
+<pre><code>create table StudentInfo(
+ ID int not null identity(1,1) unique,--编号 唯一键
+ Number char(10) not null primary key,--学号 主键
+ Name varchar(20) not null,--姓名
+ Sex char(2) null,--性别
+ Age int,--年龄
+ Birthday date,--出生日期
+ Address varchar(50),--家庭住址
+ Class varchar(10)--班级
+)
+</code></pre>
+<p>表格创建之后单独添加约束：</p>
+<pre><code>alter table StudentInfo add constraint UQ_StudentInfo_ID unique (ID)
+</code></pre>
+<p>默认值约束：<br>在建表的时候设置（以Sex字段示例）：</p>
+<pre><code>create table StudentInfo(
+ ID int not null identity(1,1) unique,--编号 唯一键
+ Number char(10) not null primary key,--学号 主键
+ Name varchar(20) not null,--姓名
+ Sex char(2) null default &#39;男&#39;,--性别 默认为男
+ Age int,--年龄
+ Birthday date,--出生日期
+ Address varchar(50),--家庭住址
+ Class varchar(10)--班级
+)
+</code></pre>
+<p>表格创建之后单独添加约束：</p>
+<pre><code>alter table StudentInfo add constraint DF_StudentInfo_Sex default &#39;男&#39; for S
+</code></pre>
+<p>未完待续。。。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://shidi233.github.io/ShiDI">hehehe327473</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://shidi233.github.io/ShiDI/2023/03/10/sql/">https://shidi233.github.io/ShiDI/2023/03/10/sql/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://shidi233.github.io/ShiDI" target="_blank">ShiDI的个人博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/ShiDI/tags/Oracle/">Oracle</a><a class="post-meta__tags" href="/ShiDI/tags/SQL/">SQL</a><a class="post-meta__tags" href="/ShiDI/tags/Qt/">Qt</a><a class="post-meta__tags" href="/ShiDI/tags/C/">C++</a></div><div class="post_share"><div class="social-share" data-image="/ShiDI/img/av1.jpg"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/ShiDI/2023/03/10/first/" title="第一篇博客，用于测试网站"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">第一篇博客，用于测试网站</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/ShiDI/img/av1.jpg" onerror="this.onerror=null;this.src='/ShiDI/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">hehehe327473</div><div class="author-info__description">学习图形学/AI的学生</div></div><div class="card-info-data site-data is-center"><a href="/ShiDI/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/ShiDI/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/ShiDI/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn"><i class="fab fa-bilibili"></i><span>Bilibili</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/SHIDi233" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://github.com/SHIDi233" target="_blank" title="Github"><i class="fab fa-bilibili"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.</span> <span class="toc-text">数据库学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E5%88%9B%E5%BB%BA"><span class="toc-number">1.1.</span> <span class="toc-text">用户创建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">创建用户密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E8%B5%8B%E4%BA%88%E6%9D%83%E9%99%90"><span class="toc-number">1.1.2.</span> <span class="toc-text">用户赋予权限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A8%E6%93%8D%E4%BD%9C"><span class="toc-number">1.2.</span> <span class="toc-text">表操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E5%BA%93"><span class="toc-number">1.2.1.</span> <span class="toc-text">操作库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E8%A1%A8"><span class="toc-number">1.2.2.</span> <span class="toc-text">操作表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%A6%E6%9D%9F%E6%9D%A1%E4%BB%B6"><span class="toc-number">1.2.3.</span> <span class="toc-text">约束条件</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ShiDI/2023/03/10/sql/" title="Oracle数据库学习笔记">Oracle数据库学习笔记</a><time datetime="2023-03-10T15:43:47.000Z" title="发表于 2023-03-10 23:43:47">2023-03-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/ShiDI/2023/03/10/first/" title="第一篇博客，用于测试网站">第一篇博客，用于测试网站</a><time datetime="2023-03-10T06:15:52.000Z" title="发表于 2023-03-10 14:15:52">2023-03-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By hehehe327473</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/ShiDI/js/utils.js"></script><script src="/ShiDI/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
