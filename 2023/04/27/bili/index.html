@@ -1,0 +1,209 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>仿b站Html5直播播放器(可能还会更新) | ShiDI的个人博客</title><meta name="author" content="红月之恋"><meta name="copyright" content="红月之恋"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="简介尝试仿制了一下bilibili弹幕网的直播功能的小（小小小）Demo，之后可能应该会仿照b站的直播间样式进行更新，甚至还会把普通视频的播放也做出来（ 项目地址：https:&#x2F;&#x2F;github.com&#x2F;SHIDi233&#x2F;html5-live-bili 开始flvjs官方介绍：一个HTML5 Flash视频（FLV）播放器，使用纯JavaScript编写，不使用Flash。FLV万岁！此项目依赖于M">
+<meta property="og:type" content="article">
+<meta property="og:title" content="仿b站Html5直播播放器(可能还会更新)">
+<meta property="og:url" content="https://shidi233.github.io/2023/04/27/bili/index.html">
+<meta property="og:site_name" content="ShiDI的个人博客">
+<meta property="og:description" content="简介尝试仿制了一下bilibili弹幕网的直播功能的小（小小小）Demo，之后可能应该会仿照b站的直播间样式进行更新，甚至还会把普通视频的播放也做出来（ 项目地址：https:&#x2F;&#x2F;github.com&#x2F;SHIDi233&#x2F;html5-live-bili 开始flvjs官方介绍：一个HTML5 Flash视频（FLV）播放器，使用纯JavaScript编写，不使用Flash。FLV万岁！此项目依赖于M">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://shidi233.github.io/img/pages_img/1.jpg">
+<meta property="article:published_time" content="2023-04-27T05:53:39.000Z">
+<meta property="article:modified_time" content="2023-04-27T10:01:25.454Z">
+<meta property="article:author" content="红月之恋">
+<meta property="article:tag" content="html5">
+<meta property="article:tag" content="js">
+<meta property="article:tag" content="bilibili">
+<meta property="article:tag" content="obs">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://shidi233.github.io/img/pages_img/1.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://shidi233.github.io/2023/04/27/bili/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '仿b站Html5直播播放器(可能还会更新)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-27 18:01:25'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/av1.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/bangumis/"><i class="fa-fw fab fa-bilibili"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/list/"><i class="fa-fw fas fa-tags"></i><span> 记录</span></a></div><div class="menus_item"><a class="site-page" href="/log/"><i class="fa-fw fas fa-book"></i><span> 日志</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/pages_img/1.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="ShiDI的个人博客"><span class="site-name">ShiDI的个人博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/bangumis/"><i class="fa-fw fab fa-bilibili"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/list/"><i class="fa-fw fas fa-tags"></i><span> 记录</span></a></div><div class="menus_item"><a class="site-page" href="/log/"><i class="fa-fw fas fa-book"></i><span> 日志</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">仿b站Html5直播播放器(可能还会更新)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-27T05:53:39.000Z" title="发表于 2023-04-27 13:53:39">2023-04-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-27T10:01:25.454Z" title="更新于 2023-04-27 18:01:25">2023-04-27</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="仿b站Html5直播播放器(可能还会更新)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>尝试仿制了一下bilibili弹幕网的直播功能的小（小小小）Demo，之后可能应该会仿照b站的直播间样式进行更新，甚至还会把普通视频的播放也做出来（</p>
+<p>项目地址：<a target="_blank" rel="noopener" href="https://github.com/SHIDi233/html5-live-bili">https://github.com/SHIDi233/html5-live-bili</a></p>
+<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><h2 id="flvjs"><a href="#flvjs" class="headerlink" title="flvjs"></a>flvjs</h2><h3 id="官方介绍："><a href="#官方介绍：" class="headerlink" title="官方介绍："></a>官方介绍：</h3><p>一个HTML5 Flash视频（FLV）播放器，使用纯JavaScript编写，不使用Flash。FLV万岁！<br>此项目依赖于Media Source Extensions来工作。<br>该项目是bilibili公司的开源项目，项目地址：<a target="_blank" rel="noopener" href="https://github.com/Bilibili/flv.js/">https://github.com/Bilibili/flv.js/</a></p>
+<h3 id="功能："><a href="#功能：" class="headerlink" title="功能："></a>功能：</h3><p>1.FLV 容器，具有 H.264 + AAC 编解码器播放功能<br>2.多部分分段视频播放<br>3.HTTP FLV 低延迟实时流播放<br>4.FLV 通过 WebSocket 实时流播放<br>5.兼容 Chrome, FireFox, Safari 10, IE11 和 Edge<br>6.低开销，能使用浏览器进行硬件加速</p>
+<p>可以选择项目进行编译或直接下载release版本，将其中flv.js与flv.min.js提取放置于网页同级文件夹下。<br><img src="/img/2023-4-27/2.png" alt="image"></p>
+<h2 id="h5界面"><a href="#h5界面" class="headerlink" title="h5界面"></a>h5界面</h2><p>既然flvjs将flv流切成了mp4片段，我们可以使用html5中的video标签直接进行播放。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>直播页面<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;description&quot;</span> <span class="attr">content</span>=<span class="string">&quot;仿Bilibili HTML5播放&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot; keywords&quot;</span> <span class="attr">content</span>=<span class="string">&quot;仿Bilibili HTML5播放&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;play-video wrapper clearfix&quot;</span> <span class="attr">style</span>=<span class="string">&quot;width: 1215px; margin: 0 auto;&quot;</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 左边 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;play-left&quot;</span> <span class="attr">style</span>=<span class="string">&quot;float: left;width: 644px;&quot;</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 视频 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;bigvideo&quot;</span> <span class="attr">style</span>=<span class="string">&quot;position: relative;width: 1144px;box-shadow: 0 0 3px 3px #ccc;&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">video</span> <span class="attr">id</span>=<span class="string">&quot;video&quot;</span> <span class="attr">controls</span> <span class="attr">autoplay</span> <span class="attr">width</span>=<span class="string">&quot;1144&quot;</span> <span class="attr">height</span>=<span class="string">&quot;644&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span> //视频播放器大小，可自行调整</span><br><span class="line">                <span class="comment">&lt;!-- 备注 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;info&quot;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">p</span>&gt;</span>直播测试<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">p</span>&gt;</span>2023.04.27<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;flv.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> player = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;video&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">	</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">if</span> (flvjs.<span class="title function_">isSupported</span>()) &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">var</span> flvPlayer = flvjs.<span class="title function_">createPlayer</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">type</span>: <span class="string">&#x27;flv&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">                <span class="string">&quot;isLive&quot;</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">url</span>: <span class="string">&#x27;http://123.57.221.224:7001/live/test.flv&#x27;</span>,<span class="comment">//拉流url</span></span></span><br><span class="line"><span class="language-javascript">            &#125;);</span></span><br><span class="line"><span class="language-javascript">            flvPlayer.<span class="title function_">attachMediaElement</span>(video);</span></span><br><span class="line"><span class="language-javascript">            flvPlayer.<span class="title function_">load</span>(); <span class="comment">//加载</span></span></span><br><span class="line"><span class="language-javascript">            <span class="title function_">flv_start</span>();</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">function</span> <span class="title function_">flv_start</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">            player.<span class="title function_">play</span>();</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">function</span> <span class="title function_">flv_pause</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">            player.<span class="title function_">pause</span>();</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">function</span> <span class="title function_">flv_destroy</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">            player.<span class="title function_">pause</span>();</span></span><br><span class="line"><span class="language-javascript">            player.<span class="title function_">unload</span>();</span></span><br><span class="line"><span class="language-javascript">            player.<span class="title function_">detachMediaElement</span>();</span></span><br><span class="line"><span class="language-javascript">            player.<span class="title function_">destroy</span>();</span></span><br><span class="line"><span class="language-javascript">            player = <span class="literal">null</span>;</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>效果图：<br><img src="/img/2023-4-27/1.png" alt="image"></p>
+<h2 id="rtmp转http-flv"><a href="#rtmp转http-flv" class="headerlink" title="rtmp转http-flv"></a>rtmp转http-flv</h2><p>这里使用livego插件进行流的转换，应该也可以使用FFmpeg（没试）。<br>livego下载地址：<a target="_blank" rel="noopener" href="https://github.com/gwuhaolin/livego/releases">https://github.com/gwuhaolin/livego/releases</a><br>这个项目使用的livego为0.0.4版本，新版本会有报错，原因未知。</p>
+<p>下载解压后使用cmd命令行运行livego.exe即可开启服务，我们要使用两个端口，分别是1935（RTMP推流）和7001（Http-flv拉流），如果我们使用了云服务器，记得在安全策略里将相关端口开放。<br><img src="/img/2023-4-27/3.png" alt="image"></p>
+<h2 id="obs推流"><a href="#obs推流" class="headerlink" title="obs推流"></a>obs推流</h2><p>万能推流神器，不多评价，好用就完事了。</p>
+<p><img src="/img/2023-4-27/4.png" alt="image"></p>
+<p>将推流地址设置为你的服务器地址，秘钥随便写一个（记得在html代码同步更改）。<br>在首页点击开始直播即可。</p>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>有一说一效果比我想的好很多，本地搭建服务的话延迟小于3秒。</p>
+<p>使用之前比赛的阿里服务器还没过期，带宽只有1M，我尝试使用800Kbps码率进行推流可以达到60fps的流畅直播。因为流的性质，在画面迅速时画质很低，在比较静态时画质较高。但1M还要什么自行车啊。</p>
+<h3 id="【泠鸢·翻唱】流年如歌-拜年祭金曲翻唱"><a href="#【泠鸢·翻唱】流年如歌-拜年祭金曲翻唱" class="headerlink" title="【泠鸢·翻唱】流年如歌 [拜年祭金曲翻唱~]"></a>【泠鸢·翻唱】流年如歌 [拜年祭金曲翻唱~]</h3><p>b站地址：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1BE411p7oi">https://www.bilibili.com/video/BV1BE411p7oi</a></p>
+<p>比较静态时：</p>
+<p><img src="/img/2023-4-27/6.png" alt="image"></p>
+<h3 id="【泠鸢·原创】夏日已所剩无几【WING翼】【茜色诗集】"><a href="#【泠鸢·原创】夏日已所剩无几【WING翼】【茜色诗集】" class="headerlink" title="【泠鸢·原创】夏日已所剩无几【WING翼】【茜色诗集】"></a>【泠鸢·原创】夏日已所剩无几【WING翼】【茜色诗集】</h3><p>b站地址：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1xs411r7Mq">https://www.bilibili.com/video/BV1xs411r7Mq</a><br>画面切换迅速时：</p>
+<p><img src="/img/2023-4-27/5.png" alt="image"></p>
+<h3 id="《原神》角色演示-「钟离：听书人」"><a href="#《原神》角色演示-「钟离：听书人」" class="headerlink" title="《原神》角色演示-「钟离：听书人」"></a>《原神》角色演示-「钟离：听书人」</h3><p>b站地址：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hD4y1X7Rm">https://www.bilibili.com/video/BV1hD4y1X7Rm</a></p>
+<p>比较静态时：</p>
+<p><img src="/img/2023-4-27/7.png" alt="image"></p>
+<p>画面切换 <u><strong>非常</strong></u> 迅速时：</p>
+<p><img src="/img/2023-4-27/8.png" alt="image"></p>
+<h1 id="未完待续。。。"><a href="#未完待续。。。" class="headerlink" title="未完待续。。。"></a>未完待续。。。</h1></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://shidi233.github.io">红月之恋</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://shidi233.github.io/2023/04/27/bili/">https://shidi233.github.io/2023/04/27/bili/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://shidi233.github.io" target="_blank">ShiDI的个人博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/html5/">html5</a><a class="post-meta__tags" href="/tags/js/">js</a><a class="post-meta__tags" href="/tags/bilibili/">bilibili</a><a class="post-meta__tags" href="/tags/obs/">obs</a></div><div class="post_share"><div class="social-share" data-image="/img/pages_img/1.jpg"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/03/15/KNN/" title="KNN算法的一次尝试"><img class="cover" src="/img/pages_img/1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">KNN算法的一次尝试</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/av1.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">红月之恋</div><div class="author-info__description">学习图形学/AI的学生</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/SHIDi233" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://www.bilibili.com" target="_blank" title="Github"><i class="fab fa-bilibili"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B"><span class="toc-number">2.</span> <span class="toc-text">开始</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#flvjs"><span class="toc-number">2.1.</span> <span class="toc-text">flvjs</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E4%BB%8B%E7%BB%8D%EF%BC%9A"><span class="toc-number">2.1.1.</span> <span class="toc-text">官方介绍：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%EF%BC%9A"><span class="toc-number">2.1.2.</span> <span class="toc-text">功能：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#h5%E7%95%8C%E9%9D%A2"><span class="toc-number">2.2.</span> <span class="toc-text">h5界面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rtmp%E8%BD%AChttp-flv"><span class="toc-number">2.3.</span> <span class="toc-text">rtmp转http-flv</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#obs%E6%8E%A8%E6%B5%81"><span class="toc-number">2.4.</span> <span class="toc-text">obs推流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%88%E6%9E%9C"><span class="toc-number">2.5.</span> <span class="toc-text">效果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%80%90%E6%B3%A0%E9%B8%A2%C2%B7%E7%BF%BB%E5%94%B1%E3%80%91%E6%B5%81%E5%B9%B4%E5%A6%82%E6%AD%8C-%E6%8B%9C%E5%B9%B4%E7%A5%AD%E9%87%91%E6%9B%B2%E7%BF%BB%E5%94%B1"><span class="toc-number">2.5.1.</span> <span class="toc-text">【泠鸢·翻唱】流年如歌 [拜年祭金曲翻唱~]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%80%90%E6%B3%A0%E9%B8%A2%C2%B7%E5%8E%9F%E5%88%9B%E3%80%91%E5%A4%8F%E6%97%A5%E5%B7%B2%E6%89%80%E5%89%A9%E6%97%A0%E5%87%A0%E3%80%90WING%E7%BF%BC%E3%80%91%E3%80%90%E8%8C%9C%E8%89%B2%E8%AF%97%E9%9B%86%E3%80%91"><span class="toc-number">2.5.2.</span> <span class="toc-text">【泠鸢·原创】夏日已所剩无几【WING翼】【茜色诗集】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%80%8A%E5%8E%9F%E7%A5%9E%E3%80%8B%E8%A7%92%E8%89%B2%E6%BC%94%E7%A4%BA-%E3%80%8C%E9%92%9F%E7%A6%BB%EF%BC%9A%E5%90%AC%E4%B9%A6%E4%BA%BA%E3%80%8D"><span class="toc-number">2.5.3.</span> <span class="toc-text">《原神》角色演示-「钟离：听书人」</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%E3%80%82%E3%80%82%E3%80%82"><span class="toc-number">3.</span> <span class="toc-text">未完待续。。。</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/04/27/bili/" title="仿b站Html5直播播放器(可能还会更新)"><img src="/img/pages_img/1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="仿b站Html5直播播放器(可能还会更新)"/></a><div class="content"><a class="title" href="/2023/04/27/bili/" title="仿b站Html5直播播放器(可能还会更新)">仿b站Html5直播播放器(可能还会更新)</a><time datetime="2023-04-27T05:53:39.000Z" title="发表于 2023-04-27 13:53:39">2023-04-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/15/KNN/" title="KNN算法的一次尝试"><img src="/img/pages_img/1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="KNN算法的一次尝试"/></a><div class="content"><a class="title" href="/2023/03/15/KNN/" title="KNN算法的一次尝试">KNN算法的一次尝试</a><time datetime="2023-03-15T02:33:30.000Z" title="发表于 2023-03-15 10:33:30">2023-03-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/10/sql/" title="Oracle数据库学习笔记"><img src="/img/pages_img/2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Oracle数据库学习笔记"/></a><div class="content"><a class="title" href="/2023/03/10/sql/" title="Oracle数据库学习笔记">Oracle数据库学习笔记</a><time datetime="2023-03-10T15:43:47.000Z" title="发表于 2023-03-10 23:43:47">2023-03-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/10/first/" title="第一篇博客，用于测试网站"><img src="/img/pages_img/3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第一篇博客，用于测试网站"/></a><div class="content"><a class="title" href="/2023/03/10/first/" title="第一篇博客，用于测试网站">第一篇博客，用于测试网站</a><time datetime="2023-03-10T06:15:52.000Z" title="发表于 2023-03-10 14:15:52">2023-03-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 红月之恋</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="/true" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div class="docsearch-wrap"><div id="docsearch" style="display:none"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css/dist/style.min.css"/><script src="https://cdn.jsdelivr.net/npm/@docsearch/js/dist/umd/index.min.js"></script><script>(() => {
+  docsearch(Object.assign({
+    appId: '',
+    apiKey: '',
+    indexName: '',
+    container: '#docsearch',
+  }, null))
+
+
+  const searchClickFn = () => {
+    document.querySelector('#search-button > .search').addEventListener('click', () => {
+      document.querySelector('.DocSearch-Button').click()
+    })
+  }
+
+  searchClickFn()
+  window.addEventListener('pjax:complete', searchClickFn)
+})()</script></div></body></html>
